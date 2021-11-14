@@ -15,8 +15,8 @@ const readDepartment = async () => {
     .catch(console.log);
 };
 
-const updateDepartment = async (updated_name, department_id) => {
-    db.query(`UPDATE department SET name = (?) WHERE id = (?)`, [updated_name, department_id]);
+const updateDepartment = async (updated_name, department_name) => {
+    db.query(`UPDATE department SET name = (?) WHERE name = (?)`, [updated_name, department_name]);
 }
 
 const deleteDepartment = async (department_id) => {

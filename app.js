@@ -26,8 +26,8 @@ const readDepartment = async () => {
 const updateDepartment = async () => {
     await department.readDepartment();
     await inquirer.prompt(questions.updateDepartment).then((response) => {
-        department.updateDepartment(response.updated_name, response.department_id);
-        console.log(chalk.greenBright('\n' + 'Updated Department - ' + response.updated_name + ', ID: ' + response.department_id + '\n'));
+        department.updateDepartment(response.updated_name, response.department_name);
+        console.log(chalk.greenBright('\n' + 'Updated Department - ' + response.updated_name + '\n'));
     })
     runMainMenu();
 };

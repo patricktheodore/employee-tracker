@@ -1,4 +1,7 @@
 const chalk = require('chalk');
+const db = require('../config/connection');
+const choices = require('./choices');
+
 
 const mainMenu = [
     {
@@ -48,18 +51,21 @@ const updateDepartment = [
         type: "list",
         name: "department_name",
         message: "Which Department do you wish to update?",
-        choices: [
-            "",
-            ""
-        ]
+        choices: db.query("SELECT name, ARRAY")
     },
-]
-
-const deleteDepartment = [
     {
-        type: ""
+        type: "input",
+        name: "updated_name",
+        message: "What is the updated name of the Department?",
+        validate: validateAlpha
     }
 ]
+
+// const deleteDepartment = [
+//     {
+//         type: ""
+//     }
+// ]
 
 const createRole = [
     {
