@@ -4,15 +4,12 @@ const db = require('../config/connection');
 
 const departmentList = async () => {
 
-    const departmentListArr = []
+    const departmentListArr = [];
 
     await db.promise().query('SELECT name FROM department')
     .then(([rows]) => {
-        rows.forEach(name => {
-            departmentListArr.push(name)
-        })
-    });
-
+        console.log(rows)
+        });
     return departmentListArr;
 }
 

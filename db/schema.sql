@@ -6,8 +6,7 @@ USE workplace_db;
 CREATE TABLE department (
     id INT NOT NULL,
     name VARCHAR(30) NOT NULL,
-    PRIMARY KEY (id),
-    ON DELETE CASCADE
+    PRIMARY KEY (id)
 ); 
 
 CREATE TABLE role (
