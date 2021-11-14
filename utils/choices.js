@@ -6,11 +6,13 @@ const departmentList = async () => {
 
     const departmentListArr = [];
 
-    await db.promise().query('SELECT name FROM department')
-    .then(([rows]) => {
+    await db.promise().query('SELECT name FROM department;')
+    .then(([rows, fields]) => {
         console.log(rows)
+        departmentListArr.push(rows);
         });
-    return departmentListArr;
+    
+        return departmentListArr;
 }
 
 module.exports = { departmentList }

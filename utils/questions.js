@@ -51,7 +51,7 @@ const updateDepartment = [
         type: "list",
         name: "department_name",
         message: "Which Department do you wish to update?",
-        choices: db.query("SELECT name, ARRAY")
+        choices: choices.departmentList
     },
     {
         type: "input",

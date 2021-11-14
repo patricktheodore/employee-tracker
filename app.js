@@ -7,7 +7,6 @@ const questions = require('./utils/questions');
 const department = require('./queries/department');
 const role = require('./queries/role');
 const employee = require('./queries/employee');
-const { response } = require('express');
 
 //department handling
 const createDepartment = async () => {
