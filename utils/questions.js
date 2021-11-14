@@ -56,7 +56,7 @@ const updateDepartment = [
     {
         type: "input",
         name: "updated_name",
-        message: "What is the updated name of the Department?",
+        message: `What is the updated name of ${answer.department_name}?`,
         validate: validateAlpha
     }
 ]

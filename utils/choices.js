@@ -1,18 +1,16 @@
-const departmentQ = require('../queries/department')
 const db = require('../config/connection');
 
 
 const departmentList = async () => {
-
-    const departmentListArr = [];
+    
+    let departmentListArr = [];
 
     await db.promise().query('SELECT name FROM department;')
     .then(([rows, fields]) => {
-        console.log(rows)
-        departmentListArr.push(rows);
+        departmentListArr = rows;
         });
-    
-        return departmentListArr;
+
+    return departmentListArr;
 }
 
 module.exports = { departmentList }
