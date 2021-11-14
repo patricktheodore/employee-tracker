@@ -12,7 +12,6 @@ const employee = require('./queries/employee');
 const createDepartment = async () => {
     await inquirer.prompt(questions.createDepartment).then((response) => {
         department.createDepartment(response.department_id, response.department_name);
-        console.log(chalk.greenBright('\n' + 'Added - New Department: ' + response.department_name + ', ID: ' + response.department_id + '\n'));
     });
     runMainMenu();
 };
@@ -23,22 +22,24 @@ const readDepartment = async () => {
 };
 
 const updateDepartment = async () => {
-    await department.readDepartment();
     await inquirer.prompt(questions.updateDepartment).then((response) => {
         department.updateDepartment(response.updated_name, response.department_name);
-        console.log(chalk.greenBright('\n' + 'Updated Department - ' + response.updated_name + '\n'));
     })
     runMainMenu();
 };
 
-const deleteDepartment = async () => { //todo
-    await department.readDepartment();
-
-    
-    
-    await department.deleteDepartment();
+const deleteDepartment = async () => {
+    await inquirer.prompt(questions.deleteDepartment).then((response) => {
+        if (response.confirm) {
+            department.deleteDepartment(response.department_name);
+            console.log(chalk.redBright('\n' + 'Deleted Department: ' + response.department_name + '\n'));
+        } else {
+            console.log(chalk.redBright('\n' + 'ABORTED!'+ '\n'));
+        }
+    });
     runMainMenu();
 };
+
 
 //role handling
 const readRole = async () => {
@@ -49,18 +50,26 @@ const readRole = async () => {
 const createRole = async () => {
     await inquirer.prompt(questions.createRole).then((response) => {
         role.createRole(response.role_id, response.role_title, response.role_salary, response.department_id);
-        console.log(chalk.greenBright('\n' + 'Added - New Role: ' + response.role_title + ', ID: ' + response.role_id + ', Salary: ' + response.role_salary + '\n'));
     });
     runMainMenu();
 };
 
-const updateRole = async () => { //todo
-    await role.updateRole();
+const updateRole = async () => {
+    await inquirer.prompt(questions.updateRole).then((response) => {
+        role.updateRole(response.role_title, response.updated_salary);
+    })
     runMainMenu();
 };
 
-const deleteRole = async () => { //todo
-    await role.deleteRole();
+const deleteRole = async () => {
+    await inquirer.prompt(questions.deleteRole).then((response) => {
+        if (response.confirm) {
+            role.deleteRole(response.role_name);
+            console.log(chalk.redBright('\n' + 'Deleted Role: ' + response.role_name + '\n'));
+        } else {
+            console.log(chalk.redBright('\n' + 'ABORTED!'+ '\n'));
+        }
+    });
     runMainMenu();
 };
 
@@ -78,13 +87,20 @@ const createEmployee = async () => {
     runMainMenu();
 };
 
-const updateEmployee = async () => { //todo
+const updateEmployee = async () => { //todo - ask which employee, update role which therefore updates manager or viceversa
     await employee.updateEmployee();
     runMainMenu();
 };
 
-const deleteEmployee = async () => { //todo
-    await employee.deleteEmployee();
+const deleteEmployee = async () => {
+    await inquirer.prompt(questions.deleteEmployee).then((response) => {
+        if (response.confirm) {
+            employee.deleteEmployee(response.employee_id);
+            console.log(chalk.redBright('\n' + 'Deleted Employee: ' + response.employee_name + '\n'));
+        } else {
+            console.log(chalk.redBright('\n' + 'ABORTED!'+ '\n'));
+        }
+    });
     runMainMenu();
 };
 
@@ -95,16 +111,16 @@ const operations = new Map();
 operations.set("View All Departments", readDepartment);
 operations.set("Add a Department", createDepartment);
 operations.set("Update a Department", updateDepartment);
-operations.set("Remove a Department", deleteDepartment);
+operations.set("Delete a Department", deleteDepartment);
 
 operations.set("View All Roles", readRole);
 operations.set("Add a Role", createRole);
-operations.set("Update a Role", updateRole);
+operations.set("Update Role Salary", updateRole);
 operations.set("Delete a Role", deleteRole);
 
 operations.set("View All Employees", readEmployee);
 operations.set("Add an Employee", createEmployee);
-operations.set("Update an Employees", updateEmployee);
+operations.set("Update an Employee", updateEmployee);
 operations.set("Delete an Employee", deleteEmployee);
 
 operations.set("Exit", runExit);
@@ -126,7 +142,7 @@ function runExit() {
 }
 
 function init() {
-    console.log(chalk.blueBright('Welcome to Workplace Employee Tracker!'));
+    console.log(chalk.blueBright('\n\n\n\n' + 'Welcome to Workplace Employee Tracker!' + '\n\n\n\n'));
     runMainMenu();
 }
 

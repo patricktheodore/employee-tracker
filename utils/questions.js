@@ -16,7 +16,7 @@ const mainMenu = [
             "Add a Role",
             "Add an Employee",
             "Update a Department",
-            "Update a Role",
+            "Update Role Salary",
             "Update an Employee",
             "Delete a Department",
             "Delete a Role",
@@ -50,22 +50,30 @@ const updateDepartment = [
     {
         type: "list",
         name: "department_name",
-        message: "Which Department do you wish to update?",
+        message: "Which Department do you wish to Update?",
         choices: choices.departmentList
     },
     {
         type: "input",
         name: "updated_name",
-        message: `What is the updated name of ${answer.department_name}?`,
+        message: `What is the Updated Name of the Department?`,
         validate: validateAlpha
     }
 ]
 
-// const deleteDepartment = [
-//     {
-//         type: ""
-//     }
-// ]
+const deleteDepartment = [
+    {
+        type: "list",
+        name: "department_name",
+        message: "Which Department do you wish to Delete?",
+        choices: choices.departmentList
+    },
+    {
+        type: "confirm",
+        name: "confirm",
+        message: "Are You Sure?! - This Cannot Be Undone!"
+    }
+]
 
 const createRole = [
     {
@@ -92,6 +100,35 @@ const createRole = [
         message: "What is the id of the Department this Role belongs too?",
         validate: validateNum
     },
+]
+
+const updateRole = [
+    {
+        type: "list",
+        name: "role_title",
+        message: "Which Role do you wish to Update?",
+        choices: choices.roleList
+    },
+    {
+        type: "input",
+        name: "updated_salary",
+        message: `What is the Updated Salary for this Role?`,
+        validate: validateNum
+    }
+]
+
+const deleteRole = [
+    {
+        type: "list",
+        name: "role_name",
+        message: "Which Role do you wish to Delete?",
+        choices: choices.roleList
+    },
+    {
+        type: "confirm",
+        name: "confirm",
+        message: "Are You Sure?! - This Cannot Be Undone!"
+    }
 ]
 
 const createEmployee = [
@@ -123,6 +160,21 @@ const createEmployee = [
 
 
 
+const deleteEmployee = [
+    {
+        type: "list",
+        name: "employee_name",
+        message: "Which Employee do you wish to Delete?",
+        choices: choices.employeeList
+    },
+    {
+        type: "confirm",
+        name: "confirm",
+        message: "Are You Sure?! - This Cannot Be Undone!"
+    }
+]
+
+
 function validateNum(userInput) {
     const re = /^[0-9]*$/;
             if (re.test(String(userInput))) {
@@ -149,5 +201,10 @@ module.exports = {
     createDepartment,
     createRole,
     createEmployee,
-    updateDepartment
+    updateDepartment,
+    deleteDepartment,
+    updateRole,
+    deleteRole,
+    // updateEmployee,
+    deleteEmployee
 }

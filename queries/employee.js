@@ -12,13 +12,19 @@ const readEmployee = async () => {
 };
 
 const createEmployee = async (employee_first_name, employee_last_name, role_id, manager_id) => { 
-    db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?, ?)`, [employee_id, employee_first_name, employee_last_name, role_id, manager_id]);
+    db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`, [employee_first_name, employee_last_name, role_id, manager_id]);
 };
 
 
 
+
+const deleteEmployee = async (employee_id) => {
+    db.query(`DELETE FROM employee WHERE id = (?)`, [employee_id]);
+}
+
 module.exports = {
     readEmployee,
-    createEmployee
-
+    createEmployee,
+    // updateEmployee,
+    deleteEmployee
 }
