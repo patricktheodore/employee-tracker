@@ -108,10 +108,24 @@ const deleteEmployee = async () => {
 
 const viewEmployeeByManager = async () => {
     await employee.viewManagers();
-    await inquirer.prompt(questions.viewEmployeeByManager).then((response) => {
-            employee.viewEmployeeByManager(response.manager_name);
+    await inquirer.prompt(questions.viewEmployeeByManager).then(async (response) => {
+            await employee.viewEmployeeByManager(response.manager_name);
+            runMainMenu();
     });
-    runMainMenu();
+};
+
+const viewEmployeesByDepartment = async () => {
+    await inquirer.prompt(questions.viewEmployeesByDepartment).then(async (response) => {
+        await department.viewEmployeesByDepartment(response.department_name);
+        runMainMenu();
+    })
+};
+
+const viewDepartmentBudget = async () => {
+    await inquirer.prompt(questions.viewDepartmentBudget).then(async (response) => {
+        await department.viewDepartmentBudget(response.department_name);
+        runMainMenu();
+    })
 };
 
 
@@ -134,9 +148,8 @@ operations.set("Update an Employee", updateEmployee);
 operations.set("Delete an Employee", deleteEmployee);
 
 operations.set("View Employees by Manager", viewEmployeeByManager);
-// operations.set("View Employees by Department", viewEmployeeByDepartment);
-// operations.set("View Total Budget of Department", viewDepartmentBudget);
-
+operations.set("View Employees by Department", viewEmployeesByDepartment);
+operations.set("View Total Budget of Department", viewDepartmentBudget);
 
 operations.set("Exit", runExit);
 

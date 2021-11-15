@@ -51,6 +51,7 @@ const viewEmployeeByManager = async (manager_name) => {
 
     await db.promise().query('SELECT id, first_name, last_name, role_id FROM employee WHERE manager_id = (?)', [managerId])
     .then(([rows, fields]) => {
+        console.log(chalk.greenBright('------------------' + '\n'));
         console.table(rows);
         console.log(chalk.greenBright('------------------' + '\n'));
     })

@@ -46,6 +46,27 @@ const employeeList = async () => {
     return employeeNameList;
 };
 
+const departmentListObj = async () => {
+    
+    let departmentListArr = [];
+    let departmentNameList = [];
+    
+    await db.promise().query("SELECT * FROM department;")
+    .then(([rows, fields]) => {
+    departmentListArr = rows;
+    }).catch(console.log);
+
+    departmentListArr.forEach(department => {
+        let nameObj = {
+            name: department.name,
+            id: department.id
+        }
+        departmentNameList.push(nameObj);
+    });
+
+    return departmentNameList;
+};
+
 const managerList = async () => {
     
     let managerListArr = [];
@@ -68,4 +89,4 @@ const managerList = async () => {
 };
 
 
-module.exports = { departmentList, roleList, employeeList, managerList }
+module.exports = { departmentList, roleList, employeeList, managerList, departmentListObj }

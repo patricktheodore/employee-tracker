@@ -21,8 +21,8 @@ const mainMenu = [
             "Delete a Department",
             "Delete a Role",
             "Delete an Employee",
-            "View Employees by Manager", //todo
-            "View Employees by Department", //todo
+            "View Employees by Manager", 
+            "View Employees by Department", 
             "View Total Budget of Department", //todo
             "Exit"
         ],
@@ -196,6 +196,23 @@ const viewEmployeeByManager = [
     },
 ]
 
+const viewEmployeesByDepartment = [
+    {
+        type: "list",
+        name: "department_name",
+        message: "Which Department Would You Like to View?",
+        choices: choices.departmentList
+    },
+]
+
+const viewDepartmentBudget = [
+    {
+        type: "list",
+        name: "department_name",
+        message: "Which Department Would You Like to View?",
+        choices: choices.departmentList
+    }
+]
 
 function validateNum(userInput) {
     const re = /^[0-9]*$/;
@@ -229,5 +246,7 @@ module.exports = {
     deleteRole,
     updateEmployee,
     deleteEmployee,
-    viewEmployeeByManager
+    viewEmployeeByManager,
+    viewEmployeesByDepartment,
+    viewDepartmentBudget
 }
