@@ -23,7 +23,7 @@ const mainMenu = [
             "Delete an Employee",
             "View Employees by Manager", 
             "View Employees by Department", 
-            "View Total Budget of Department", //todo
+            "View Total Budget of Department", 
             "Exit"
         ],
         default: "View All Departments",

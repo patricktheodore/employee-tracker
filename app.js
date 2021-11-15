@@ -132,26 +132,22 @@ const viewDepartmentBudget = async () => {
 //operations
 const operations = new Map();
 
-operations.set("View All Departments", readDepartment);
-operations.set("Add a Department", createDepartment);
-operations.set("Update a Department", updateDepartment);
-operations.set("Delete a Department", deleteDepartment);
-
-operations.set("View All Roles", readRole);
-operations.set("Add a Role", createRole);
-operations.set("Update Role Salary", updateRole);
-operations.set("Delete a Role", deleteRole);
-
-operations.set("View All Employees", readEmployee);
-operations.set("Add an Employee", createEmployee);
-operations.set("Update an Employee", updateEmployee);
-operations.set("Delete an Employee", deleteEmployee);
-
-operations.set("View Employees by Manager", viewEmployeeByManager);
-operations.set("View Employees by Department", viewEmployeesByDepartment);
-operations.set("View Total Budget of Department", viewDepartmentBudget);
-
-operations.set("Exit", runExit);
+operations.set("View All Departments", readDepartment)
+.set("Add a Department", createDepartment)
+.set("Update a Department", updateDepartment)
+.set("Delete a Department", deleteDepartment)
+.set("View All Roles", readRole)
+.set("Add a Role", createRole)
+.set("Update Role Salary", updateRole)
+.set("Delete a Role", deleteRole)
+.set("View All Employees", readEmployee)
+.set("Add an Employee", createEmployee)
+.set("Update an Employee", updateEmployee)
+.set("Delete an Employee", deleteEmployee)
+.set("View Employees by Manager", viewEmployeeByManager)
+.set("View Employees by Department", viewEmployeesByDepartment)
+.set("View Total Budget of Department", viewDepartmentBudget)
+.set("Exit", runExit);
 
 
 
