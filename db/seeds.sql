@@ -1,15 +1,59 @@
 INSERT INTO department (id, name)
 VALUES (1, 'Sales'),
-       (2, 'Accounting');
+       (2, 'Accounting'),
+       (3, 'Admin'),
+       (4, 'Design'),
+       (5, 'IT'),
+       (6, 'Maintenance'),
+       (7, 'Recruiting'),
+       (8, 'HR');
 
 INSERT INTO role (id, name, salary, department_id)
-VALUES (1, 'Sales Lead', 65000, 1),
-       (2, 'Sales Assosciate', 55000, 1),
-       (3, 'Accountant', 65000, 2);
+VALUES  (101, 'Head of Sales', 105000, 1),
+        (201, 'Head of Accounting', 111000, 2),
+        (301, 'Admin', 65000, 3),
+        (401, 'Lead Designer', 145000, 4),
+        (501, 'IT Manager', 95000, 5),
+        (601, 'Head of Maintenance', 85000, 6),
+        (701, 'Head of Recruiting', 85000, 7),
+        (801, 'HR Manager', 155000, 8),
+        (111, 'Senior Salesman', 85000, 1),
+        (112, 'Salesman', 65000, 1),
+        (113, 'Junior Salesman', 55000, 1),
+        (211, 'Accountant', 85000, 2),
+        (411, 'Designer', 105000, 4),
+        (511, 'IT Consultant', 85000, 5),
+        (611, 'Maintenance', 55000, 6),
+        (711, 'Recruiter', 65000, 7),
+        (811, 'HR Consultant', 75000, 8);
 
 INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
-VALUES (101, 'Sam', 'Sales', 1, NULL),
-       (201, 'Dave', 'Accounting', 3, NULL),
-       (202, 'Eric', 'Salesman', 2, 101);
+VALUES (1000, 'Sam', 'Samuels', 101, NULL),
+       (1001, 'Dave', 'Davison', 201, NULL),
+       (1002, 'Eric', 'Erricson', 301, NULL),
+       (1003, 'Sean', 'Shaun', 401, NULL),
+       (1004, 'Sarah', 'Sara', 501, NULL),
+       (1005, 'Jeff', 'Geoff', 601, NULL),
+       (1006, 'Stuart', 'Stewart', 701, NULL),
+       (1007, 'Patrice', 'Parker', 801, NULL),
+       (1008, 'Lena', 'Bourne', 111, 1000),
+       (1009, 'Kenneth', 'Poindexter', 111, 1000),
+       (1010, 'Burt', 'Moss', 112, 1000),
+       (1011, 'Tommy', 'Ruskin', 112, 1000),
+       (1012, 'Clement', 'Bullard', 112, 1000),
+       (1013, 'Sunday', 'Caldwell', 113, 1000),
+       (1014, 'Dean', 'Pain', 211, 1001),
+       (1015, 'Dave', 'Davison', 211, 1001),
+       (1016, 'Gabrielle', 'Adkins', 211, 1001),
+       (1017, 'Annie', 'Peel', 411, 1003),
+       (1018, 'Allie', 'Keighley', 411, 1003),
+       (1019, 'Roz', 'Burnham', 411, 1003),
+       (1020, 'Ollie', 'Abrahamson', 411, 1003),
+       (1021, 'Moreen', 'Cantrell', 511, 1004),
+       (1022, 'Kynaston', 'Paterson', 511, 1004),
+       (1023, 'Crystal', 'Peacock', 611, 1005),
+       (1024, 'Kailey', 'Rowland', 711, 1006),
+       (1025, 'Kassidy', 'Howland', 711, 1006),
+       (1026, 'Phebe', 'Stone', 811, 1007);
 
 
