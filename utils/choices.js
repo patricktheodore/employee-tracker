@@ -27,23 +27,45 @@ const roleList = async () => {
 
 const employeeList = async () => {
     
-    let allArr = db.promise('SELECT * FROM employee;');
-
-    const choices = allArr[0];
-
     let employeeListArr = [];
+    let employeeNameList = [];
+    
+    await db.promise().query("SELECT * FROM employee;")
+    .then(([rows, fields]) => {
+    employeeListArr = rows;
+    }).catch(console.log);
 
-    choices.forEach(element => {
+    employeeListArr.forEach(employee => {
         let nameObj = {
-            name: element.first_name + ' ' + element,last_name,
-            value: element.id
+            name: employee.first_name + ' ' + employee.last_name,
+            id: employee.id
         }
-        employeeListArr.push(nameObj);
-    })
+        employeeNameList.push(nameObj);
+    });
 
-    return employeeListArr;
-}
+    return employeeNameList;
+};
+
+const managerList = async () => {
+    
+    let managerListArr = [];
+    let managerNameList = [];
+    
+    await db.promise().query("SELECT * FROM employee WHERE manager_id IS NULL;")
+    .then(([rows, fields]) => {
+    managerListArr = rows;
+    }).catch(console.log);
+
+    managerListArr.forEach(manager => {
+        let nameObj = {
+            name: manager.first_name + ' ' + manager.last_name,
+            id: manager.id
+        }
+        managerNameList.push(nameObj);
+    });
+
+    return managerNameList;
+};
 
 
-
-module.exports = { departmentList, roleList, employeeList }
+module.exports = { departmentList, roleList, employeeList, managerList }

@@ -23,7 +23,7 @@ const mainMenu = [
             "Delete an Employee",
             "View Employees by Manager", //todo
             "View Employees by Department", //todo
-            "View Total Budget of Departments", //todo
+            "View Total Budget of Department", //todo
             "Exit"
         ],
         default: "View All Departments",
@@ -158,7 +158,20 @@ const createEmployee = [
     },
 ]
 
-
+const updateEmployee = [
+    {
+        type: "list",
+        name: "employee_name",
+        message: "Which Employee do you wish to Update?",
+        choices: choices.employeeList
+    },
+    {
+        type: "input",
+        name: "updated_manager_id",
+        message: `What is the Employee's New Manager's ID?`,
+        validate: validateNum
+    }
+]
 
 const deleteEmployee = [
     {
@@ -172,6 +185,15 @@ const deleteEmployee = [
         name: "confirm",
         message: "Are You Sure?! - This Cannot Be Undone!"
     }
+]
+
+const viewEmployeeByManager = [
+    {
+        type: "list",
+        name: "manager_name",
+        message: "Which Manager's Employee's Would You Like To View?",
+        choices: choices.managerList
+    },
 ]
 
 
@@ -205,6 +227,7 @@ module.exports = {
     deleteDepartment,
     updateRole,
     deleteRole,
-    // updateEmployee,
-    deleteEmployee
+    updateEmployee,
+    deleteEmployee,
+    viewEmployeeByManager
 }

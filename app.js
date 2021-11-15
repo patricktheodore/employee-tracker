@@ -87,19 +87,29 @@ const createEmployee = async () => {
     runMainMenu();
 };
 
-const updateEmployee = async () => { //todo - ask which employee, update role which therefore updates manager or viceversa
-    await employee.updateEmployee();
+const updateEmployee = async () => { 
+    await inquirer.prompt(questions.updateEmployee).then((response) => {
+        employee.updateEmployee(response.employee_name, response.updated_manager_id);
+    })
     runMainMenu();
 };
 
 const deleteEmployee = async () => {
     await inquirer.prompt(questions.deleteEmployee).then((response) => {
         if (response.confirm) {
-            employee.deleteEmployee(response.employee_id);
+            employee.deleteEmployee(response.employee_name);
             console.log(chalk.redBright('\n' + 'Deleted Employee: ' + response.employee_name + '\n'));
         } else {
             console.log(chalk.redBright('\n' + 'ABORTED!'+ '\n'));
         }
+    });
+    runMainMenu();
+};
+
+const viewEmployeeByManager = async () => {
+    await employee.viewManagers();
+    await inquirer.prompt(questions.viewEmployeeByManager).then((response) => {
+            employee.viewEmployeeByManager(response.manager_name);
     });
     runMainMenu();
 };
@@ -122,6 +132,11 @@ operations.set("View All Employees", readEmployee);
 operations.set("Add an Employee", createEmployee);
 operations.set("Update an Employee", updateEmployee);
 operations.set("Delete an Employee", deleteEmployee);
+
+operations.set("View Employees by Manager", viewEmployeeByManager);
+// operations.set("View Employees by Department", viewEmployeeByDepartment);
+// operations.set("View Total Budget of Department", viewDepartmentBudget);
+
 
 operations.set("Exit", runExit);
 
