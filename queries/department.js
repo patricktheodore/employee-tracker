@@ -35,7 +35,7 @@ const viewEmployeesByDepartment = async (department_name) => {
     await db.promise().query(`SELECT CONCAT(employee.first_name, ' ', employee.last_name) AS 'Name', department.name AS 'Department' 
     FROM employee 
     INNER JOIN role ON employee.role_id = role.id
-    INNER JOIN department ON role.id = department.id
+    INNER JOIN department ON role.department_id = department.id
     WHERE department.id = (?)`, [departmentId])
         .then(([rows, fields]) => {
             console.log(chalk.greenBright('------------------' + '\n'));

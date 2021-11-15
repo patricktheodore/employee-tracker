@@ -88,10 +88,10 @@ const createEmployee = async () => {
 };
 
 const updateEmployee = async () => { 
-    await inquirer.prompt(questions.updateEmployee).then((response) => {
-        employee.updateEmployee(response.employee_name, response.updated_manager_id);
+    await inquirer.prompt(questions.updateEmployee).then(async (response) => {
+        await employee.updateEmployee(response.employee_name, response.updated_manager_id);
+        runMainMenu();
     })
-    runMainMenu();
 };
 
 const deleteEmployee = async () => {
@@ -166,7 +166,7 @@ const runMainMenu = async () => {
 
 function runExit() {
     console.log(chalk.redBright('Thank you for using Workplace Employee Tracker!' + '\n' + 'Goodbye!'));
-
+    return
 }
 
 function init() {
